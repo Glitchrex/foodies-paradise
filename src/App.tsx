@@ -1,9 +1,11 @@
 import './App.css'
+import FoodList from './components/FoodList'
 import type { FoodExperience } from './types/food'
 
 function App() {
 
-const sampleFoodExperience: FoodExperience = {
+const sampleFoodExperienceList: FoodExperience[] = [
+  {
     id: "1",
     dishPicture: "",
     dishName: "Pasta Primavera",
@@ -14,20 +16,39 @@ const sampleFoodExperience: FoodExperience = {
     createdAt: new Date(),
     locality: "Downtown",
     typeOfCuisine: "Veg"
-};
+},
+{
+    id: "2",
+    dishPicture: "",
+    dishName: "Chicken Tikka Masala",
+    eateryName: "Spice Hub",
+    location: "456 Elm St, Springfield",
+    rating: 4.8,
+    review: "Rich flavors and perfectly cooked chicken.",
+    createdAt: new Date(),
+    locality: "Uptown",
+    typeOfCuisine: "NonVeg"
+},
+{
+    id: "3",
+    dishPicture: "",
+    dishName: "Vegan Buddha Bowl",
+    eateryName: "Green Eats",
+    location: "789 Oak St, Springfield",
+    rating: 4.2,
+    review: "A healthy and tasty option for vegans.",
+    createdAt: new Date(),
+    locality: "Midtown",
+    typeOfCuisine: "Vegan"
+}
+];
 
   return (
     <div>
       <h1>Welcome to Foodie Local Discovery</h1>
-      <h1>Dish details</h1>
-      <p><strong>Dish Name:</strong> {sampleFoodExperience.dishName}</p>
-      <p><strong>Eatery Name:</strong> {sampleFoodExperience.eateryName}</p>
-      <p><strong>Location:</strong> {sampleFoodExperience.location}</p>   
-      <p><strong>Rating:</strong> {sampleFoodExperience.rating} / 5</p>
-      <p><strong>Review:</strong> {sampleFoodExperience.review}</p>
-      <p><strong>Locality:</strong> {sampleFoodExperience.locality}</p>
-      <p><strong>Type of Cuisine:</strong> {sampleFoodExperience.typeOfCuisine}</p>
-      <p><strong>Visit Date:</strong> {sampleFoodExperience.createdAt.toLocaleDateString()}</p>
+      <h1>Dish List</h1>
+      <FoodList FoodExperienceList = {sampleFoodExperienceList} />
+      
     </div>
   )
 }
