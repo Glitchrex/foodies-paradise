@@ -21,7 +21,7 @@ const sampleFoodExperienceList: FoodExperience[] = [
     typeOfCuisine: "Vegan"
 }
 ];
-
+const [searchFood , SetSearchFood ] = useState<string>("");
 const [ FoodExperienceList, setFoodExperienceList ] =  useState<FoodExperience[]>(sampleFoodExperienceList);
 const [isLoading , setisLoading] = useState<boolean>(true);
 const [hasErrors , setHasErrors] = useState<boolean>(false);
@@ -43,6 +43,13 @@ useEffect( () => {
   })
 },[])
 
+const filterFoods = FoodExperienceList.filter( (food) =>
+  food.dishName.toLowerCase().includes(searchFood.toLowerCase()) ||
+  food.eateryName.toLowerCase().includes(searchFood.toLowerCase()) ||
+  food.locality.toLowerCase().includes(searchFood.toLowerCase()) ||
+  food.typeOfCuisine.toLowerCase().includes(searchFood.toLowerCase())
+);
+
 if(isLoading){
   return <div>Loading...</div>
 }
@@ -56,7 +63,8 @@ if(hasErrors){
     <div>
       <h1>Welcome to Foodie Local Discovery</h1>
       <FoodForm onAddFood={handleFoods} />
-      <FoodList FoodExperienceList = {FoodExperienceList} />
+      <input type='search' placeholder='Search Food by locality, Cuisine, Eatery or Dish Name' value={searchFood} onChange={ (e) => SetSearchFood(e.target.value)} />
+      <FoodList FoodExperienceList = {filterFoods} />
       
     </div>
   )
