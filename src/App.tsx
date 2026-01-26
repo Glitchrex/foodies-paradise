@@ -1,53 +1,54 @@
+import { useEffect, useState } from 'react';
 import './App.css'
 import FoodList from './components/FoodList'
 import type { FoodExperience } from './types/food'
+import { fetchFoodExperiences } from './api/foodApi';
+import FoodForm from './components/FoodForm';
 
 function App() {
 
 const sampleFoodExperienceList: FoodExperience[] = [
-  {
+{
     id: "1",
     dishPicture: "",
-    dishName: "Pasta Primavera",
-    eateryName: "Italian Bistro",
-    location: "123 Main St, Springfield",
-    rating: 4.5,
-    review: "Delicious and fresh ingredients, highly recommend!",
-    createdAt: new Date(),
-    locality: "Downtown",
-    typeOfCuisine: "Veg"
-},
-{
-    id: "2",
-    dishPicture: "",
-    dishName: "Chicken Tikka Masala",
-    eateryName: "Spice Hub",
-    location: "456 Elm St, Springfield",
-    rating: 4.8,
-    review: "Rich flavors and perfectly cooked chicken.",
-    createdAt: new Date(),
-    locality: "Uptown",
-    typeOfCuisine: "NonVeg"
-},
-{
-    id: "3",
-    dishPicture: "",
-    dishName: "Vegan Buddha Bowl",
-    eateryName: "Green Eats",
-    location: "789 Oak St, Springfield",
+    dishName: "Masala Dosa",
+    eateryName: "Vidyarthi Bhavan",
+    location: "Basavanagudi, Bangalore",
     rating: 4.2,
-    review: "A healthy and tasty option for vegans.",
+    review: "Crispy dosa with rich chutney and ghee",
     createdAt: new Date(),
     locality: "Midtown",
     typeOfCuisine: "Vegan"
 }
 ];
 
+const [ FoodExperienceList, setFoodExperienceList ] =  useState<FoodExperience[]>(sampleFoodExperienceList);
+const [isLoading , setisLoading] = useState<boolean>(true);
+const [hasErrors , setHasErrors] = useState<boolean>(false);
+const [errorMessage , setErrorMessage] = useState<string>("");
+
+function handleFoods(food : FoodExperience){
+  setFoodExperienceList((prevFoods => [ food, ...prevFoods]));
+}
+
+useEffect( () => {
+  // Simulate fetching data
+  fetchFoodExperiences().then( (data) => {
+    setFoodExperienceList(data);
+    setisLoading(false);
+  }).catch( (error) => {
+    setHasErrors(true);
+    setErrorMessage(error.message);
+    setisLoading(false);
+  })
+})
+
   return (
     <div>
       <h1>Welcome to Foodie Local Discovery</h1>
       <h1>Dish List</h1>
-      <FoodList FoodExperienceList = {sampleFoodExperienceList} />
+      <FoodForm onAddFood={handleFoods} />
+      <FoodList FoodExperienceList = {FoodExperienceList} />
       
     </div>
   )
