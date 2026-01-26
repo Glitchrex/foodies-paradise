@@ -88,6 +88,8 @@ function FoodForm({ onAddFood }: FoodFormProps) {
       />
 
       <button type="submit">Add Food</button>
+      <button type="reset">Reset</button>
+
     </form>
   );
 }

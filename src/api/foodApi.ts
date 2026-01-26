@@ -41,6 +41,6 @@ export function fetchFoodExperiences(): Promise<FoodExperience[]> {
     typeOfCuisine: "Vegan"
 }
             ]);
-        },10000);
+        },1000);
     });
 }

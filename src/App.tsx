@@ -41,12 +41,20 @@ useEffect( () => {
     setErrorMessage(error.message);
     setisLoading(false);
   })
-})
+},[])
+
+if(isLoading){
+  return <div>Loading...</div>
+}
+
+if(hasErrors){
+  return <div>Error: {errorMessage}</div>
+}
+
 
   return (
     <div>
       <h1>Welcome to Foodie Local Discovery</h1>
-      <h1>Dish List</h1>
       <FoodForm onAddFood={handleFoods} />
       <FoodList FoodExperienceList = {FoodExperienceList} />
       
