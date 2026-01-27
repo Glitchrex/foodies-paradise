@@ -7,7 +7,7 @@ type FoodCardProps = {
 
 const FoodCard = ({ sampleFood }: FoodCardProps) => {
   return (
-    <div>
+    <div className="food-card">
       <h2>{sampleFood.dishName}</h2>
       <p><strong>Eatery:</strong> {sampleFood.eateryName}</p>
       <p><strong>Location:</strong> {sampleFood.location}</p>

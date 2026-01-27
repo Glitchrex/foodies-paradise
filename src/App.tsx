@@ -16,9 +16,10 @@ if(error){
 }
 
   return (
-    <div>
+    <div className='container'>
       <h1>Welcome to Foodie Local Discovery</h1>
-      <input type='search' placeholder='Search Food by Name,Locality,type or restautant'
+      <input className='search-input'
+       type='search' placeholder='Search Food by Name,Locality,type or restautant'
        value={searchFood}
        onChange={(e) => setSearchFood(e.target.value)} />
       <FoodForm onAddFood={addFood} />
