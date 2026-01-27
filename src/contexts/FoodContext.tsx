@@ -5,15 +5,27 @@ import { fetchFoodExperiences } from "../api/foodApi";
 type FoodContextType = {
   FoodExperienceList: FoodExperience[];
   addFood: (food: FoodExperience) => void;
+  loading: boolean;
+  error: string | null;
 };
 
 const FoodContext = createContext<FoodContextType | undefined>(undefined);
 
 export function FoodProvider({ children }: { children: React.ReactNode }) {
   const [FoodExperienceList, setFoodExperienceList] = useState<FoodExperience[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchFoodExperiences().then(setFoodExperienceList);
+    fetchFoodExperiences()
+    .then((food) => {
+      setFoodExperienceList(food);
+      setLoading(false);
+    } )
+    .catch((err) => {
+      setError(err.message);
+      setLoading(false);
+    });
   }, []);
 
   const addFood = useCallback((food: FoodExperience) => {
@@ -21,7 +33,7 @@ export function FoodProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <FoodContext.Provider value={{ FoodExperienceList, addFood }}>
+    <FoodContext.Provider value={{ FoodExperienceList, addFood, loading, error }}>
       {children}
     </FoodContext.Provider>
   );

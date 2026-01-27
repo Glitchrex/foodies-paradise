@@ -5,9 +5,15 @@ import { useFood } from './contexts/FoodContext';
 import { useSearchFood } from './hooks/useSearchFood';
 
 function App() {
-const { FoodExperienceList, addFood } =  useFood();
+const { FoodExperienceList, addFood, loading, error } =  useFood();
 const {searchFood , setSearchFood, filteredFoodExperienceList } = useSearchFood(FoodExperienceList);
 
+if(loading){
+  return <div>Loading food experiences...</div>
+}
+if(error){
+  return <div>Error: {error}</div>
+}
 
   return (
     <div>
@@ -16,8 +22,12 @@ const {searchFood , setSearchFood, filteredFoodExperienceList } = useSearchFood(
        value={searchFood}
        onChange={(e) => setSearchFood(e.target.value)} />
       <FoodForm onAddFood={addFood} />
+
+      {filteredFoodExperienceList.length === 0 ? (
+        <div>No food experiences found.</div>
+      ) : (
       <FoodList FoodExperienceList = {filteredFoodExperienceList} />
-      
+      )}
     </div>
   )
 }
