@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import type { FoodExperience } from "../types/food";
 import { fetchFoodExperiences } from "../api/foodApi";
 
@@ -16,9 +16,9 @@ export function FoodProvider({ children }: { children: React.ReactNode }) {
     fetchFoodExperiences().then(setFoodExperienceList);
   }, []);
 
-  function addFood(food: FoodExperience) {
+  const addFood = useCallback((food: FoodExperience) => {
     setFoodExperienceList((prev) => [food, ...prev]);
-  }
+  }, []);
 
   return (
     <FoodContext.Provider value={{ FoodExperienceList, addFood }}>
