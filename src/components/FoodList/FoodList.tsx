@@ -1,5 +1,5 @@
-import type { FoodExperience } from "../types/food";
-import FoodCard from "./FoodCard";
+import type { FoodExperience } from "../../types/food";
+import FoodCard from "../FoodCard/FoodCard";
 
 
 type FoodListProps = {

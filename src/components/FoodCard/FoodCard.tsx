@@ -1,4 +1,4 @@
-import type { FoodExperience } from "../types/food"
+import type { FoodExperience } from "../../types/food"
 
 type FoodCardProps = {
     sampleFood : FoodExperience;
@@ -14,7 +14,7 @@ const FoodCard = ({ sampleFood }: FoodCardProps) => {
       <p><strong>Rating:</strong> {sampleFood.rating} / 5</p>
       <p><strong>Review:</strong> {sampleFood.review}</p>
       <p><strong>Locality:</strong> {sampleFood.locality}</p>
-      <p><strong>Type of Cuisine:</strong> {sampleFood.typeOfCuisine}</p>
+      <p><strong>Type of Cuisine:</strong> {sampleFood.dietaryPreference}</p>
       <p><strong>Visit Date:</strong> {sampleFood.createdAt.toLocaleDateString()}</p>
     </div>      
   )

@@ -1,6 +1,6 @@
 import './App.css'
-import FoodList from './components/FoodList'
-import FoodForm from './components/FoodForm';
+import FoodList from './components/FoodList/FoodList'
+import FoodForm from './components/FoodForm/FoodForm';
 import { useFood } from './contexts/FoodContext';
 import { useSearchFood } from './hooks/useSearchFood';
 

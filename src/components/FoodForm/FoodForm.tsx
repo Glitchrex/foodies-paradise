@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FoodExperience } from "../types/food";
+import type { FoodExperience } from "../../types/food";
 
 type FoodFormProps = {
   onAddFood: (food: FoodExperience) => void;
@@ -10,7 +10,7 @@ function FoodForm({ onAddFood }: FoodFormProps) {
   const [eateryName, setEateryName] = useState("");
   const [locality, setLocality] = useState("");
   const [location, setLocation] = useState("");
-  const [typeOfCuisine, setTypeOfCuisine] = useState<"Veg" | "NonVeg" | "Vegan" | "GlutenFree" | "JainFood" | "Other">("Veg");
+  const [dietaryPreference, setdietaryPreference] = useState<"Veg" | "NonVeg" | "Vegan" | "GlutenFree" | "JainFood" | "Other">("Veg");
   const [dishPicture, setDishPicture] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
@@ -23,7 +23,7 @@ function FoodForm({ onAddFood }: FoodFormProps) {
       dishName,
       eateryName,
       locality,
-      typeOfCuisine,
+      dietaryPreference,
       location,
       dishPicture,
       rating,
@@ -36,7 +36,7 @@ function FoodForm({ onAddFood }: FoodFormProps) {
     setEateryName("");
     setLocality("");
     setLocation("");
-    setTypeOfCuisine("Veg");
+    setdietaryPreference("Veg");
     setDishPicture("");
     setReview("");
     setRating(0);
@@ -59,8 +59,8 @@ function FoodForm({ onAddFood }: FoodFormProps) {
 
        <input
         placeholder="Cuisine Type"
-        value={typeOfCuisine}
-        onChange={(e) => setTypeOfCuisine(e.target.value as any)}
+        value={dietaryPreference}
+        onChange={(e) => setdietaryPreference(e.target.value as any)}
       />
 
       <input

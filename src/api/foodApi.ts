@@ -14,7 +14,7 @@ export function fetchFoodExperiences(): Promise<FoodExperience[]> {
     review: "Delicious and fresh ingredients, highly recommend!",
     createdAt: new Date(),
     locality: "Downtown",
-    typeOfCuisine: "Veg"
+    dietaryPreference: "Veg"
 },
 {
     id: "2",
@@ -26,7 +26,7 @@ export function fetchFoodExperiences(): Promise<FoodExperience[]> {
     review: "Rich flavors and perfectly cooked chicken.",
     createdAt: new Date(),
     locality: "Uptown",
-    typeOfCuisine: "NonVeg"
+    dietaryPreference: "NonVeg"
 },
 {
     id: "3",
@@ -38,7 +38,19 @@ export function fetchFoodExperiences(): Promise<FoodExperience[]> {
     review: "A healthy and tasty option for vegans.",
     createdAt: new Date(),
     locality: "Midtown",
-    typeOfCuisine: "Vegan"
+    dietaryPreference: "Vegan"
+},
+{
+     id: "1",
+    dishName: "Masala Dosa",
+    eateryName: "Vidyarthi Bhavan",
+    locality: "Basavanagudi",
+    review: "Crispy and tasty",
+    dietaryPreference: "Veg",
+    createdAt: new Date(),
+    dishPicture: "",
+    location: "Bengaluru",
+    rating: 0
 }
             ]);
         },1000);

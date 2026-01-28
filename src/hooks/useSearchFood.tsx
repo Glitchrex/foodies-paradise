@@ -14,7 +14,7 @@ export function useSearchFood(FoodExperienceList : FoodExperience[]){
             food.dishName.toLowerCase().includes(searchFood.toLowerCase()) ||
             food.eateryName.toLowerCase().includes(searchFood.toLowerCase()) ||
             food.locality.toLowerCase().includes(searchFood.toLowerCase()) ||
-            food.typeOfCuisine.toLowerCase().includes(searchFood.toLowerCase())
+            food.dietaryPreference.toLowerCase().includes(searchFood.toLowerCase())
         )
         })  
     },[FoodExperienceList, searchFood]);

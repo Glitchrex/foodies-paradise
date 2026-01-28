@@ -8,5 +8,6 @@ export type FoodExperience = {
     review: string;
     createdAt: Date;
     locality: string;
-    typeOfCuisine: "Veg" | "NonVeg" | "Vegan" | "GlutenFree" | "JainFood" | "Other";
+    dietaryPreference: "Veg" | "NonVeg" | "Vegan" | "GlutenFree" | "JainFood" | "Other";
+    typeOfCuisine?: string;
 }   
